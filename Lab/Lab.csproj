@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A632BDE3-A1D1-4D61-AECE-777EBD75B2F9}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Lab</RootNamespace>
+    <AssemblyName>Lab</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="GalaSoft.MvvmLight.Extras.WPF45">
+      <HintPath>..\packages\MvvmLightLibs.4.1.27.0\lib\net45\GalaSoft.MvvmLight.Extras.WPF45.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.WPF45">
+      <HintPath>..\packages\MvvmLightLibs.4.1.27.0\lib\net45\GalaSoft.MvvmLight.WPF45.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Reactive, Version=1.0.10621.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rx-Main.1.0.11226\lib\Net4\System.Reactive.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MvvmLightLibs.4.1.27.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DesignData\DesignPlate384Vm.cs" />
+    <Compile Include="DesignData\DesignPlate96Vm.cs" />
+    <Compile Include="DesignData\DesignWellVm.cs" />
+    <Compile Include="Model\AdmeTerms.cs" />
+    <Compile Include="Model\Containers\Plate\SamplePlateGroup.cs" />
+    <Compile Include="Model\Containers\Single\BottleLoc.cs" />
+    <Compile Include="Model\Containers\IContainerLoc.cs" />
+    <Compile Include="Model\Containers\Plate\IWellLoc.cs" />
+    <Compile Include="Model\Containers\Single\IBottleLoc.cs" />
+    <Compile Include="Model\ICompoundSample.cs" />
+    <Compile Include="Model\MsInjection\BottleInjection.cs" />
+    <Compile Include="Model\MsInjection\InjectionExt.cs" />
+    <Compile Include="Model\MsInjection\InjectionType.cs" />
+    <Compile Include="Model\MsInjection\UnknownInjection.cs" />
+    <Compile Include="Model\MsInjection\WellInjection.cs" />
+    <Compile Include="Model\Sample\ISample.cs" />
+    <Compile Include="Model\ISamplePlate.cs" />
+    <Compile Include="Model\Containers\Plate\IWell.cs" />
+    <Compile Include="Model\PlateMap\Enums.cs" />
+    <Compile Include="Model\PlateMap\PlateMapTarget.cs" />
+    <Compile Include="Model\PlateMap\SolubilityPlateMap.cs" />
+    <Compile Include="Model\Sample\SampleBase.cs" />
+    <Compile Include="Model\Containers\Plate\SamplePlate.cs" />
+    <Compile Include="Model\Containers\Plate\SamplePlateSize.cs" />
+    <Compile Include="Model\Containers\VialPosition.cs" />
+    <Compile Include="Model\Containers\Plate\Well.cs" />
+    <Compile Include="Model\Containers\Plate\WellLoc.cs" />
+    <Compile Include="Model\Containers\Plate\WellExt.cs" />
+    <Compile Include="Model\Containers\Plate\WellSorterReadingOrder.cs" />
+    <Compile Include="Model\Containers\IContainer.cs" />
+    <Compile Include="Model\Containers\Container.cs" />
+    <Compile Include="Model\Containers\Single\Bottle.cs" />
+    <Compile Include="Model\Containers\ContainerExt.cs" />
+    <Compile Include="Model\Containers\ContainerType.cs" />
+    <Compile Include="Model\MsInjection\IInjection.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="ViewModel\WellVm.cs" />
+    <Compile Include="Views\Converters.cs" />
+    <Compile Include="Views\KeyValuePairGridControl.xaml.cs" />
+    <Compile Include="Views\PlatesControl384.xaml.cs">
+      <DependentUpon>PlatesControl384.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PlatesControl96.xaml.cs">
+      <DependentUpon>PlatesControl96.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ucPlate384.xaml.cs">
+      <DependentUpon>ucPlate384.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ucPlate96.xaml.cs">
+      <DependentUpon>ucPlate96.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ucWell.xaml.cs">
+      <DependentUpon>ucWell.xaml</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\KeyValuePairGridControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PlatesControl384.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PlatesControl96.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ucPlate384.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ucPlate96.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ucWell.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MathUtils\MathUtils.csproj">
+      <Project>{d3549e19-0cc7-4ce5-8b0f-6d5236e581d6}</Project>
+      <Name>MathUtils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utils\Utils.csproj">
+      <Project>{2ee7853c-c6d5-463b-8e70-e7deee1e41fa}</Project>
+      <Name>Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WpfUtils\WpfUtils.csproj">
+      <Project>{66a08c2e-d258-4154-8263-4a4befa0dee5}</Project>
+      <Name>WpfUtils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="MVVMLight.Nuget.Readme.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

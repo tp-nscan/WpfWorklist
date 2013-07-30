@@ -1,0 +1,29 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:stepControls="clr-namespace:SorterControls.Views.Steps"
+                    >
+
+    <DataTemplate x:Key="EmptyStepControl">
+        <stepControls:EmptyStepControl/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="SwitchablePoolStepControl">
+        <stepControls:SwitchablePoolStepControl/>
+    </DataTemplate>
+    
+    <DataTemplate x:Key="SorterPoolStepControl">
+        <stepControls:SorterPoolStepControl/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="CompetePoolStepControl">
+        <stepControls:CompetePoolStepC/>
+    </DataTemplate>
+
+    <stepControls:StepTemplateSelector x:Key="stepTemplateSelector"
+        SwitchablePoolStepTemplate="{StaticResource SwitchablePoolStepControl}"
+        SorterPoolStepTemplate="{StaticResource SorterPoolStepControl}"
+        CompetePoolStepTemplate="{StaticResource CompetePoolStepControl}"
+        EmptyStepTemplate="{StaticResource EmptyStepControl}"
+     />
+    
+</ResourceDictionary>

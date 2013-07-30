@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="SorterControls.Views.Steps.WorkflowStepsControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:designData="clr-namespace:GaSorter.DesignData"
+             x:Name="ControlRoot"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance designData:DesignSorterGaWorkflowVm, IsDesignTimeCreatable=True}"
+             d:DesignHeight="300" d:DesignWidth="300">
+
+    <UserControl.Resources>
+        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource GlassButton}">
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Width" Value="70"/>
+            <Setter Property="TextBlock.FontSize" Value="12"/>
+        </Style>
+    </UserControl.Resources>
+    
+    <DockPanel x:Name="dockPanel" HorizontalAlignment="Stretch" LastChildFill="True">
+        
+        <WrapPanel Orientation="Horizontal" DockPanel.Dock="Bottom">
+            <Button>Remove</Button>
+        </WrapPanel>
+
+        <ListView x:Name="WorkflowList" ItemsSource="{Binding StepVms.Items}" 
+                  SelectedItem="{Binding SelectedStep, ElementName=ControlRoot, Mode=OneWayToSource}"
+                  Background="#2248"> 
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="IsSelected" Value="{Binding IsSelected}"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border Background="#2FFF">
+                        <DockPanel LastChildFill="True">
+                            <Label DockPanel.Dock="Left"
+                                   Style="{DynamicResource Header1}"
+                                   VerticalAlignment="Center"
+                                   FontSize="20"
+                                   Content="{Binding Index}"/>
+                            <Label DockPanel.Dock="Top" Style="{DynamicResource Header3}"
+                                   HorizontalAlignment="Center"
+                                   Content="{Binding TypeName}"/>
+                            <Label Style="{DynamicResource Header3}" Content="{Binding Name}"/>
+
+                        </DockPanel>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </DockPanel>
+</UserControl>

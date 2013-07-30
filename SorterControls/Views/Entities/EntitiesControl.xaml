@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="SorterControls.Views.Entities.EntitiesControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:designData="clr-namespace:SorterControls.DesignData.Steps"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance designData:DesignEntitiesVm, IsDesignTimeCreatable=True}"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Border>
+        <DockPanel LastChildFill="True">
+            <TextBlock HorizontalAlignment="Center" Background="{x:Null}" 
+                       Foreground="#FF8F" FontSize="16" DockPanel.Dock="Top" Text="Entities"/>
+            <ListView Background="#2FFF" ItemsSource="{Binding EntityVms}">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Background="#8FFF">
+                            <DockPanel LastChildFill="True">
+                                <Label DockPanel.Dock="Top" Style="{DynamicResource Header2}"
+                                   HorizontalAlignment="Center"
+                                   Content="{Binding TypeName}"/>
+                                <Label DockPanel.Dock="Top" Style="{DynamicResource Header3}" Content="{Binding Name}"/>
+                                <Label DockPanel.Dock="Top" Style="{DynamicResource Header3}" Content="{Binding Guid}"/>
+                            </DockPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </DockPanel>
+    </Border>
+</UserControl>

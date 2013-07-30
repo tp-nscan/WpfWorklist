@@ -1,0 +1,293 @@
+﻿<UserControl x:Class="SorterControls.Views.Builders.CompPoolBuilder"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:builders="clr-namespace:SorterControls.DesignData.Builders"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance builders:DesignCompetePoolStepBuilderVm, IsDesignTimeCreatable=True}"
+             >
+    <UserControl.Resources>
+        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource GlassButton}">
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="TextBlock.FontSize" Value="12"/>
+        </Style>
+    </UserControl.Resources>
+    
+    <DockPanel LastChildFill="True"  Background="#29E9">
+
+        <Label DockPanel.Dock="Top" Content="New Competition Pool" Style="{DynamicResource Header1}"/>
+        
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+        
+        <Grid  Margin="4">
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="6" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid.Resources>
+                <DataTemplate DataType="{x:Type ValidationError}">
+                      <TextBlock 
+                      FontStyle="Italic"
+                      Foreground="Red"
+                      HorizontalAlignment="Right"
+                      Margin="0,1"
+                      Text="{Binding Path=ErrorContent}" 
+                      />
+                </DataTemplate>
+            </Grid.Resources>
+
+           <!-- Sorter Pools -->
+          <Label Style="{DynamicResource FieldNameLabel}"
+                Grid.Row="2" Grid.Column="0" 
+                Content="Sorter Pools:" 
+                HorizontalAlignment="Right"
+                Target="{Binding ElementName=SorterPoolCmb}" 
+          />
+              <ComboBox Style="{DynamicResource FieldComboBox}"
+                x:Name="SorterPoolCmb"
+                Grid.Row="2" Grid.Column="2" 
+                ItemsSource="{Binding Path=SorterPoolVms, Mode=OneTime}"
+                DisplayMemberPath="Name"
+                Validation.ErrorTemplate="{x:Null}"
+          />
+          <!--SelectedItem="{Binding Path=CustomerType, ValidatesOnDataErrors=True}"-->
+            
+            
+         <ContentPresenter 
+          Grid.Row="3" Grid.Column="2"
+          Content="{Binding ElementName=SorterPoolCmb, Path=(Validation.Errors).CurrentItem}"
+          />
+
+         <!-- Switchable Pools -->
+          <Label Style="{DynamicResource FieldNameLabel}"
+              Grid.Row="4" Grid.Column="0" 
+              Content="Switchable Pools:" 
+              HorizontalAlignment="Right"
+              Target="{Binding ElementName=SwitchablePoolCmb}" 
+          />
+           <ComboBox Style="{DynamicResource FieldComboBox}"
+              x:Name="SwitchablePoolCmb"
+              Grid.Row="4" Grid.Column="2" 
+              ItemsSource="{Binding Path=SwitchablePoolVms, Mode=OneTime}"
+              DisplayMemberPath="Name"
+              Validation.ErrorTemplate="{x:Null}"
+          />
+            <ContentPresenter 
+              Grid.Row="5" Grid.Column="2"
+              Content="{Binding ElementName=SwitchablePoolCmb, Path=(Validation.Errors).CurrentItem}"
+          />
+            
+          <!-- Name -->
+          <Label Style="{DynamicResource FieldNameLabel}"
+              Grid.Row="6" Grid.Column="0" 
+              Content="Name:" 
+              HorizontalAlignment="Right"
+              Target="{Binding ElementName=NameTxt}"
+          />
+
+        <TextBox Style="{DynamicResource FieldTextBox}"
+            x:Name="NameTxt"
+            Grid.Row="6" Grid.Column="2" 
+            Text="{Binding Path=Name, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" 
+            Validation.ErrorTemplate="{x:Null}"
+          />
+                <ContentPresenter 
+          Grid.Row="7" Grid.Column="2" 
+          Content="{Binding ElementName=NameTxt, Path=(Validation.Errors).CurrentItem}"
+          />
+
+        <!-- Description -->
+        <Label Style="{DynamicResource FieldNameLabel}"
+          Grid.Row="8" Grid.Column="0" 
+          Content="Description:" 
+          HorizontalAlignment="Right"
+          Target="{Binding ElementName=DescriptionTxt}"
+          />
+
+                <TextBox Style="{DynamicResource FieldTextBox}"
+          x:Name="DescriptionTxt"
+          Grid.Row="8" Grid.Column="2" 
+          Text="{Binding Path=Description, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" 
+          Validation.ErrorTemplate="{x:Null}"
+          />
+                <ContentPresenter 
+          Grid.Row="9" Grid.Column="2" 
+          Content="{Binding ElementName=DescriptionTxt, Path=(Validation.Errors).CurrentItem}"
+          />
+
+                <!-- GenerationCount -->
+                <Label Style="{DynamicResource FieldNameLabel}"
+          Grid.Row="10" Grid.Column="0" 
+          Content="Number of generations:" 
+          HorizontalAlignment="Right"
+          Target="{Binding ElementName=GenerationCountTxt}" 
+          />
+            <TextBox Style="{DynamicResource FieldTextBox}"
+          x:Name="GenerationCountTxt"
+          Grid.Row="10" Grid.Column="2" 
+          Text="{Binding Path=GenerationCount, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+          Validation.ErrorTemplate="{x:Null}"
+          />
+          <ContentPresenter 
+          Grid.Row="11" Grid.Column="2"
+          Content="{Binding ElementName=GenerationCountTxt, Path=(Validation.Errors).CurrentItem}"
+          />
+
+            <!-- MutationRate -->
+                <Label Style="{DynamicResource FieldNameLabel}"
+          Grid.Row="12" Grid.Column="0" 
+          Content="Mutation rate:" 
+          HorizontalAlignment="Right"
+          Target="{Binding ElementName=MutationRateTxt}" 
+          />
+            <TextBox Style="{DynamicResource FieldTextBox}"
+          x:Name="MutationRateTxt"
+          Grid.Row="12" Grid.Column="2" 
+          Text="{Binding Path=MutationRate, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}"
+          Validation.ErrorTemplate="{x:Null}"
+          />
+            <ContentPresenter 
+          Grid.Row="13" Grid.Column="2"
+          Content="{Binding ElementName=MutationRateTxt, Path=(Validation.Errors).CurrentItem}"
+          />
+
+            <!-- RandomSeedIn -->
+                <Label Style="{DynamicResource FieldNameLabel}"
+          Grid.Row="14" Grid.Column="0" 
+          Content="Random seed:" 
+          HorizontalAlignment="Right"
+          Target="{Binding ElementName=RandomSeedInTxt}" 
+          />
+            <TextBox Style="{DynamicResource FieldTextBox}"
+          x:Name="RandomSeedInTxt"
+          Grid.Row="14" Grid.Column="2" 
+          Text="{Binding Path=RandomSeedIn, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+          Validation.ErrorTemplate="{x:Null}"
+          />
+          <ContentPresenter 
+          Grid.Row="15" Grid.Column="2"
+          Content="{Binding ElementName=RandomSeedInTxt, Path=(Validation.Errors).CurrentItem}"
+          />
+
+            <!-- SorterChampCount -->
+                <Label Style="{DynamicResource FieldNameLabel}"
+          Grid.Row="16" Grid.Column="0" 
+          Content="Sorter champ count:" 
+          HorizontalAlignment="Right"
+          Target="{Binding ElementName=SorterChampCountTxt}" 
+          />
+          <TextBox Style="{DynamicResource FieldTextBox}"
+          x:Name="SorterChampCountTxt"
+          Grid.Row="16" Grid.Column="2" 
+          Text="{Binding Path=SorterChampCount, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+          Validation.ErrorTemplate="{x:Null}"
+          />
+          <ContentPresenter 
+          Grid.Row="17" Grid.Column="2"
+          Content="{Binding ElementName=SorterChampCountTxt, Path=(Validation.Errors).CurrentItem}"
+          />
+
+            <!-- SorterPoolSize -->
+                <Label Style="{DynamicResource FieldNameLabel}"
+          Grid.Row="18" Grid.Column="0" 
+          Content="Sorter pool size:" 
+          HorizontalAlignment="Right"
+          Target="{Binding ElementName=SorterPoolSizeTxt}" 
+          />
+          <TextBox Style="{DynamicResource FieldTextBox}"
+          x:Name="SorterPoolSizeTxt"
+          Grid.Row="18" Grid.Column="2" 
+          Text="{Binding Path=SorterPoolSize, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+          Validation.ErrorTemplate="{x:Null}"
+          />
+            <ContentPresenter 
+          Grid.Row="19" Grid.Column="2"
+          Content="{Binding ElementName=SorterPoolSizeTxt, Path=(Validation.Errors).CurrentItem}"
+          />
+
+           <!-- SwitchableChampCount -->
+                <Label Style="{DynamicResource FieldNameLabel}"
+          Grid.Row="20" Grid.Column="0" 
+          Content="Switchable champ count:" 
+          HorizontalAlignment="Right"
+          Target="{Binding ElementName=SwitchableChampCountTxt}" 
+          />
+          <TextBox Style="{DynamicResource FieldTextBox}"
+          x:Name="SwitchableChampCountTxt"
+          Grid.Row="20" Grid.Column="2" 
+          Text="{Binding Path=SwitchableChampCount, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+          Validation.ErrorTemplate="{x:Null}"
+          />
+            <ContentPresenter 
+          Grid.Row="21" Grid.Column="2"
+          Content="{Binding ElementName=SwitchableChampCountTxt, Path=(Validation.Errors).CurrentItem}"
+          />
+
+            <!-- SwitchablePoolSize -->
+                <Label Style="{DynamicResource FieldNameLabel}"
+          Grid.Row="22" Grid.Column="0" 
+          Content="Switchable pool size:" 
+          HorizontalAlignment="Right"
+          Target="{Binding ElementName=SwitchablePoolSizeTxt}" 
+          />
+            <TextBox Style="{DynamicResource FieldTextBox}"
+          x:Name="SwitchablePoolSizeTxt"
+          Grid.Row="22" Grid.Column="2" 
+          Text="{Binding Path=SwitchablePoolSize, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+          Validation.ErrorTemplate="{x:Null}"
+          />
+            <ContentPresenter 
+          Grid.Row="23" Grid.Column="2"
+          Content="{Binding ElementName=SwitchablePoolSizeTxt, Path=(Validation.Errors).CurrentItem}"
+          />
+
+        <!--Build BUTTON-->
+        <Button 
+          Grid.Row="24" Grid.Column="2"
+          Command="{Binding Path=BuildCommandVm.Command}"
+          Content="Build"
+          HorizontalAlignment="Left"
+          Margin="4,2" 
+          MinWidth="60" 
+          />
+            
+        </Grid>
+        </ScrollViewer>
+    </DockPanel>
+</UserControl>

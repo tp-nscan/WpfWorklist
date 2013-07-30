@@ -1,0 +1,28 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:builders="clr-namespace:SorterControls.Views.Builders">
+
+    <DataTemplate x:Key="RandSwitchablePoolBuilder">
+        <builders:SwitchablePoolBuilder/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="RandSorterPoolBuilder">
+        <builders:SorterPoolBuilder/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="CompPoolBuilder">
+        <builders:CompPoolBuilder/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="EmptyPoolBuilder">
+        <builders:EmptyStepBuilder />
+    </DataTemplate>
+    
+    <builders:StepBuilderTemplateSelector x:Key="WorkflowlStepBuilderTemplateSelector"
+        SwitchablePoolStepBuilderTemplate="{StaticResource RandSwitchablePoolBuilder}"
+        SorterPoolStepBuilderTemplate="{StaticResource RandSorterPoolBuilder}"
+        CompetePoolStepBuilderTemplate="{StaticResource CompPoolBuilder}"
+        EmptyStepBuilderTemplate="{StaticResource EmptyPoolBuilder}"
+     />
+    
+</ResourceDictionary>

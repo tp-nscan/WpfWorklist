@@ -1,0 +1,310 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6BFF425A-725C-4DA5-BB6B-A03713C7BBF6}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SorterControls</RootNamespace>
+    <AssemblyName>SorterControls</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Reactive.Core, Version=2.1.30214.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Rx-Core.2.1.30214.0\lib\Net45\System.Reactive.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Interfaces, Version=2.1.30214.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Rx-Interfaces.2.1.30214.0\lib\Net45\System.Reactive.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Linq, Version=2.1.30214.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Rx-Linq.2.1.30214.0\lib\Net45\System.Reactive.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.PlatformServices">
+      <HintPath>..\packages\Rx-PlatformServices.2.1.30214.0\lib\Net45\System.Reactive.PlatformServices.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DesignData\Builders\DesignCompetePoolStepBuilderVm.cs" />
+    <Compile Include="DesignData\Builders\DesignRandSorterPoolBuilderVm.cs" />
+    <Compile Include="DesignData\Builders\DesignRandSwitchablePoolBuilderVm.cs" />
+    <Compile Include="DesignData\Builders\DesignWorkflowStepBuilderHostVm.cs" />
+    <Compile Include="DesignData\Entities\DesignSorterResultPoolVm.cs" />
+    <Compile Include="DesignData\Entities\DesignSorterPoolVm.cs" />
+    <Compile Include="DesignData\Entities\DesignSwitchablePoolVm.cs" />
+    <Compile Include="DesignData\Steps\DesignCompetePoolStepVm.cs" />
+    <Compile Include="DesignData\Steps\DesignEntitiesVm.cs" />
+    <Compile Include="DesignData\Steps\DesignSorterPoolStepVm.cs" />
+    <Compile Include="DesignData\Steps\DesignSwitchablePoolStepVm.cs" />
+    <Compile Include="DesignData\Entities\DesignSorterVm.cs" />
+    <Compile Include="DesignData\Entities\DesignSwitchVm.cs" />
+    <Compile Include="DesignData\Steps\DesignWorkflowStepHostVm.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="ViewModels\Bulders\CompetePoolBuilderVm.cs" />
+    <Compile Include="ViewModels\Bulders\EmptyStepBuilderVm.cs" />
+    <Compile Include="ViewModels\Bulders\SwitchablePoolBuilderVm.cs" />
+    <Compile Include="ViewModels\Bulders\SorterPoolBuilderVm.cs" />
+    <Compile Include="ViewModels\Bulders\StepBuilderHostVm.cs" />
+    <Compile Include="ViewModels\Common\VmConverters.cs" />
+    <Compile Include="ViewModels\Entities\EntityHostVm.cs" />
+    <Compile Include="ViewModels\Entities\SorterResultPoolVm.cs" />
+    <Compile Include="ViewModels\Entities\SorterResultVm.cs" />
+    <Compile Include="ViewModels\Entities\SwitchableVm.cs" />
+    <Compile Include="ViewModels\Entities\SwitchMonitorVm.cs" />
+    <Compile Include="ViewModels\Steps\CompetePoolStepVm.cs" />
+    <Compile Include="ViewModels\Steps\EmptyStepVm.cs" />
+    <Compile Include="ViewModels\Bulders\StepBuilderVm.cs" />
+    <Compile Include="ViewModels\Steps\SorterPoolStepVm.cs" />
+    <Compile Include="ViewModels\Steps\SwitchablePoolStepVm.cs" />
+    <Compile Include="ViewModels\Entities\SorterPoolVm.cs" />
+    <Compile Include="ViewModels\Entities\SorterVm.cs" />
+    <Compile Include="ViewModels\Entities\SwitchablePoolVm.cs" />
+    <Compile Include="ViewModels\Entities\SwitchVm.cs" />
+    <Compile Include="ViewModels\Steps\WorkflowStepHostVm.cs" />
+    <Compile Include="Views\Builders\EmptyStepBuilder.xaml.cs">
+      <DependentUpon>EmptyStepBuilder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Builders\StepBuilderHost.xaml.cs">
+      <DependentUpon>StepBuilderHost.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Builders\CompetePoolBuilder.xaml.cs">
+      <DependentUpon>CompetePoolBuilder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Builders\StepBuilderTemplateSelector.cs" />
+    <Compile Include="Views\Builders\SorterPoolBuilder.xaml.cs">
+      <DependentUpon>SorterPoolBuilder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Builders\SwitchablePoolBuilder.xaml.cs">
+      <DependentUpon>SwitchablePoolBuilder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Entities\EntityHost.xaml.cs">
+      <DependentUpon>EntityHost.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Entities\EntitiesControl.xaml.cs">
+      <DependentUpon>EntitiesControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Entities\SorterMonitorPoolControl.xaml.cs">
+      <DependentUpon>SorterMonitorPoolControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Entities\SorterPoolControl.xaml.cs">
+      <DependentUpon>SorterPoolControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Entities\SwitchablePoolControl.xaml.cs">
+      <DependentUpon>SwitchablePoolControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Entities\SwitchControl.xaml.cs">
+      <DependentUpon>SwitchControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Steps\CompetePoolStepControl.xaml.cs">
+      <DependentUpon>CompetePoolStepControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Steps\EmptyStepControl.xaml.cs">
+      <DependentUpon>EmptyStepControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Steps\StepTemplateSelector.cs" />
+    <Compile Include="Views\Steps\StepHost.xaml.cs">
+      <DependentUpon>StepHost.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Entities\EntityTemplateSelector.cs" />
+    <Compile Include="Views\Steps\SorterPoolStepControl.xaml.cs">
+      <DependentUpon>SorterPoolStepControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Steps\SwitchablePoolStepControl.xaml.cs">
+      <DependentUpon>SwitchablePoolStepControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Entities\SorterControl.xaml.cs">
+      <DependentUpon>SorterControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Entities\SwitchVisual.cs" />
+    <Compile Include="Views\Steps\WorkflowStepsControl.xaml.cs">
+      <DependentUpon>WorkflowStepsControl.xaml</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DynamicModel\DynamicModel.csproj">
+      <Project>{f8b7ef12-e686-4208-9c0a-33ff926d3db0}</Project>
+      <Name>DynamicModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MathUtils\MathUtils.csproj">
+      <Project>{D3549E19-0CC7-4CE5-8B0F-6D5236E581D6}</Project>
+      <Name>MathUtils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SortingNetworkDm\SortingNetworkDm.csproj">
+      <Project>{97133ace-3168-49e3-aaea-e545b1ffcafd}</Project>
+      <Name>SortingNetworkDm</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SortNetwork\SortNetwork.csproj">
+      <Project>{68113405-3448-4db2-ad9b-64d54f9d04c5}</Project>
+      <Name>SortNetwork</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utils\Utils.csproj">
+      <Project>{2ee7853c-c6d5-463b-8e70-e7deee1e41fa}</Project>
+      <Name>Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WpfUtils\WpfUtils.csproj">
+      <Project>{66a08c2e-d258-4154-8263-4a4befa0dee5}</Project>
+      <Name>WpfUtils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Views\Builders\EmptyStepBuilder.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Builders\StepBuilderHost.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Builders\CompetePoolBuilder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Builders\StepBuilderTemplateSelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Builders\SorterPoolBuilder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Builders\SwitchablePoolBuilder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Entities\EntityHost.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Entities\EntitiesControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Entities\SorterMonitorPoolControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Entities\SorterPoolControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Entities\SwitchablePoolControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Entities\SwitchControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Resources\BasicStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Steps\CompetePoolStepControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Entities\EntityTemplateSelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Steps\EmptyStepControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Steps\StepTemplateSelector.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Steps\StepHost.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Steps\SorterPoolStepControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Steps\SwitchablePoolStepControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Entities\SorterControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Steps\WorkflowStepsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,9 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <BitmapImage x:Key="trashCan" UriSource="/Views\Resources\trash_can.jpg"/>
+    <BitmapImage x:Key="clock" UriSource="/Views\Resources\clock.jpg"/>
+    <BitmapImage x:Key="date" UriSource="/Views\Resources\date_icon.png"/>
+    <BitmapImage x:Key="numeric" UriSource="/Views\Resources\numeric_icon.jpg"/>
+    <BitmapImage x:Key="boolean" UriSource="/Views\Resources\boolean_icon.jpg"/>
+    <BitmapImage x:Key="timespan" UriSource="/Views\Resources\TimeSpan.jpg"/>
+</ResourceDictionary>

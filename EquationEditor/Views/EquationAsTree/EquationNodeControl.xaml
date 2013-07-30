@@ -1,0 +1,234 @@
+﻿<UserControl x:Class="EquationEditor.Views.EquationAsTree.EquationNodeControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:EquationAsTree="clr-namespace:EquationEditor.Views.EquationAsTree"
+             xmlns:Converters="clr-namespace:WpfUtils.Converters;assembly=WpfUtils" x:Name="controlRoot" mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    
+    <UserControl.Resources>
+
+        <Style x:Key="rootBorder" TargetType="Border">
+            <Setter Property="Background" Value="#4FF0"/>
+            <Setter Property="Padding" Value="4"/>
+            <Setter Property="CornerRadius" Value="4"/>
+            <Setter Property="DataContext" Value="{Binding DataContext, RelativeSource={RelativeSource FindAncestor, 
+                                AncestorType={x:Type EquationAsTree:EquationNodeControl}}}"/>
+        </Style>
+        
+        <Style x:Key="elementBorder" TargetType="Border">
+            <Setter Property="Background" Value="#40F0"/>
+            <Setter Property="Padding" Value="4"/>
+            <Setter Property="CornerRadius" Value="4"/>
+            <Setter Property="DataContext" Value="{Binding DataContext, RelativeSource={RelativeSource FindAncestor, 
+                                AncestorType={x:Type EquationAsTree:EquationNodeControl}}}"/>
+        </Style>
+
+        <Style x:Key="operatorBorder" TargetType="Border">
+            <Setter Property="Width" Value="35"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Background" Value="#FAAA"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="CornerRadius" Value="4"/>
+            <Setter Property="DataContext" Value="{Binding DataContext, RelativeSource={RelativeSource FindAncestor, 
+                                AncestorType={x:Type EquationAsTree:EquationNodeControl}}}"/>
+        </Style>
+
+        <Style x:Key="unknownBorder" TargetType="Border">
+            <Setter Property="Background" Value="#300F"/>
+            <Setter Property="Padding" Value="4"/>
+            <Setter Property="CornerRadius" Value="4"/>
+        </Style>
+
+        <Style x:Key="operatorTextBlock" TargetType="TextBlock">
+            <Setter Property="FontWeight" Value="ExtraBold"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0,-12,0,0"/>
+            <Setter Property="ToolTip" Value="{Binding Description}"/>
+        </Style>
+        
+        <DataTemplate x:Key="equationRoot">
+            <Border Width="180" Style="{StaticResource rootBorder}">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Width="140" TextWrapping="Wrap" 
+                           Text="{Binding Name}"/>
+            </Border>
+        </DataTemplate>
+
+        <DataTemplate x:Key="element">
+            <Border Width="180" Style="{StaticResource rootBorder}">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Width="140" TextWrapping="Wrap" 
+                           Text="{Binding Description}"/>
+            </Border>
+        </DataTemplate>
+        
+        <DataTemplate x:Key="Add">
+            <Border Style="{StaticResource operatorBorder}">
+                <TextBlock Style="{StaticResource operatorTextBlock}" Margin="0,-8,0,0" FontSize="34" Text="+"/>
+            </Border>
+        </DataTemplate>
+        
+        <DataTemplate x:Key="Subtract">
+            <Border Style="{StaticResource operatorBorder}">
+                <TextBlock Style="{StaticResource operatorTextBlock}" Margin="0,-25,0,0" FontWeight="Normal" FontSize="55" Text="-"/>
+            </Border>
+        </DataTemplate>
+
+        <DataTemplate x:Key="Multiply">
+            <Border Style="{StaticResource operatorBorder}">
+                <TextBlock Style="{StaticResource operatorTextBlock}" Margin="0,-4,0,0" FontWeight="DemiBold" FontSize="26" Text="x"/>
+            </Border>
+        </DataTemplate>
+
+        <DataTemplate x:Key="Divide">
+            <Border Style="{StaticResource operatorBorder}">
+                <StackPanel Orientation="Vertical" Margin="0,-11,0,0">
+                    <TextBlock Style="{StaticResource operatorTextBlock}" Margin="10,5,10,0" FontSize="20" Text="."/>
+                    <TextBlock Style="{StaticResource operatorTextBlock}" Margin="0,-45,0,0" FontWeight="Normal" FontSize="55" Text="-"/>
+                    <TextBlock Style="{StaticResource operatorTextBlock}" Margin="0,-44,0,0" FontSize="20" Text="."/>
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+
+        <DataTemplate x:Key="Power">
+            <Border Style="{StaticResource operatorBorder}">
+                <StackPanel Orientation="Horizontal" Margin="6,6,0,0">
+                    <TextBlock Style="{StaticResource operatorTextBlock}" Margin="0,-1,0,0" FontSize="20" Text="a"/>
+                    <TextBlock Style="{StaticResource operatorTextBlock}" Margin="0,-4,0,0" FontSize="16" Text="b"/>
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+
+
+        <DataTemplate x:Key="Or">
+            <Border Style="{StaticResource operatorBorder}">
+                <TextBlock Style="{StaticResource operatorTextBlock}" Margin="0,5,0,0"  FontSize="20" Text="Or"/>
+            </Border>
+        </DataTemplate>
+
+        <DataTemplate x:Key="LessThan">
+            <Border Style="{StaticResource operatorBorder}">
+                <TextBlock Style="{StaticResource operatorTextBlock}" FontWeight="Normal" FontSize="36" Text="&lt;"/>
+            </Border>
+        </DataTemplate>
+
+        <DataTemplate x:Key="GreaterThan">
+            <Border Style="{StaticResource operatorBorder}">
+                <TextBlock Style="{StaticResource operatorTextBlock}" FontWeight="Normal" FontSize="36" Text="&gt;"/>
+            </Border>
+        </DataTemplate>
+
+        <DataTemplate x:Key="Equals">
+            <Border Style="{StaticResource operatorBorder}">
+                <TextBlock Style="{StaticResource operatorTextBlock}" FontWeight="Normal" FontSize="36" Text="="/>
+            </Border>
+        </DataTemplate>
+
+        <DataTemplate x:Key="Average">
+            <StackPanel>
+                <Border Style="{StaticResource operatorBorder}">
+                    <StackPanel Orientation="Vertical" Margin="0,-11,0,0">
+                        <TextBlock Style="{StaticResource operatorTextBlock}" Margin="3,-22,0,0" FontWeight="Normal" FontSize="55" Text="-"/>
+                        <TextBlock Style="{StaticResource operatorTextBlock}" Margin="0,-34,0,0" FontStyle="Italic" FontSize="20" Text="{}{x}"/>
+                    </StackPanel>
+                </Border>
+                <StackPanel x:Name="buttons" Orientation="Horizontal">
+                    <Button Width="50" Command="{Binding AddChild}">Add</Button>
+                    <Button Command="{Binding RemoveChild}">Remove</Button>
+                    <!--<Button Command="{Binding RemoveChild, Converter={Converters:PassThruConverter}}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}">Remove</Button>-->
+                </StackPanel>
+            </StackPanel>
+        </DataTemplate>
+
+
+        <DataTemplate x:Key="Case">
+            <Border Style="{StaticResource elementBorder}">
+                <TextBlock Text="{Binding Description}"/>
+            </Border>
+        </DataTemplate>
+
+
+        <DataTemplate x:Key="DateDiff">
+            <Border Style="{StaticResource elementBorder}">
+                <Image Width="30" Height="30" ToolTip="{Binding Description}" Source="{StaticResource timespan}" />
+            </Border>
+        </DataTemplate>
+
+
+        <DataTemplate x:Key="EllipseArea">
+            <Ellipse Stroke="Black" ToolTip="{Binding Description}"
+                     StrokeThickness="2" Fill="Gray" Height="30" Width="41"/>
+        </DataTemplate>
+
+        <DataTemplate x:Key="HasValue">
+            <Border Style="{StaticResource unknownBorder}">
+                <TextBlock Text="unknown equation part"/>
+            </Border>
+        </DataTemplate>
+
+        <DataTemplate x:Key="IfNull">
+            <Border Style="{StaticResource unknownBorder}">
+                <TextBlock Text="unknown equation part"/>
+            </Border>
+        </DataTemplate>
+
+        <DataTemplate x:Key="MakeDate">
+            <Border Style="{StaticResource unknownBorder}">
+                <Border Style="{StaticResource elementBorder}">
+                    <Image Width="30" Height="30" ToolTip="{Binding Description}" Source="{StaticResource date}" />
+                </Border>
+            </Border>
+        </DataTemplate>
+
+        <DataTemplate x:Key="Range">
+            <Border Style="{StaticResource unknownBorder}">
+                <TextBlock Text="unknown equation part"/>
+            </Border>
+        </DataTemplate>
+
+        <DataTemplate x:Key="When">
+            <Border Style="{StaticResource unknownBorder}">
+                <TextBlock Text="add a logic valued element or operator here"/>
+            </Border>
+        </DataTemplate>
+        
+        <DataTemplate x:Key="arg.numeric">
+            <Border Style="{StaticResource unknownBorder}">
+                <TextBlock ToolTip="Add a numeric element or operator here" FontStyle="Italic" Text="(number)"/>
+            </Border>
+        </DataTemplate>
+
+        <DataTemplate x:Key="arg.datetime">
+            <Border Style="{StaticResource unknownBorder}">
+                <TextBlock ToolTip="Add a date/time valued element or operator here" FontStyle="Italic" Text="(date/time)"/>
+            </Border>
+        </DataTemplate>
+
+        <DataTemplate x:Key="arg.bool">
+            <Border Style="{StaticResource unknownBorder}">
+                <TextBlock FontStyle="Italic" Text="(true/false)"/>
+            </Border>
+        </DataTemplate>
+
+        <DataTemplate x:Key="arg.timespan">
+            <Border Style="{StaticResource unknownBorder}">
+                <TextBlock ToolTip="Add a time span element or operator here" FontStyle="Italic" Text="(time span)"/>
+            </Border>
+        </DataTemplate>
+
+        <DataTemplate x:Key="arg.any">
+            <Border Style="{StaticResource unknownBorder}">
+                <TextBlock ToolTip="Add any element or operator here" FontStyle="Italic" Text="any"/>
+            </Border>
+        </DataTemplate>
+        
+
+    </UserControl.Resources>
+    
+    <Grid>
+
+        <ContentPresenter HorizontalAlignment="Left" x:Name="contentPresenter" Content="{Binding}" ContentTemplate="{StaticResource Average}" />
+
+    </Grid>
+    
+</UserControl>

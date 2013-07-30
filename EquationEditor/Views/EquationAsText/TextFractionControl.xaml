@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="EquationEditor.Views.EquationAsText.TextFractionControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             x:Name="controlRoot"
+             mc:Ignorable="d">
+
+    <StackPanel Orientation="Horizontal">
+
+        <TextBlock VerticalAlignment="Center" Margin="0,0,0,35"
+                       Text="(" FontSize="130" FontWeight="Light" 
+                       Visibility="{Binding ElementName=controlRoot, Path=ParenthesisVisibility}"/>
+        
+        <Grid VerticalAlignment="Center">
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Viewbox Height="40" Stretch="Uniform">
+                <ContentPresenter ContentTemplate="{Binding ElementName=controlRoot, Path=NumeratorTemplate}"/>
+            </Viewbox>
+
+            <Canvas Grid.Row="1" Background="Black" Height="3" Margin="10,0,10,0"/>
+        
+            <Viewbox Grid.Row="2" Height="40" Stretch="Uniform">
+                <ContentPresenter ContentTemplate="{Binding ElementName=controlRoot, Path=DenominatorTemplate}"/>
+            </Viewbox>
+        </Grid>
+
+        <TextBlock VerticalAlignment="Center" Margin="0,0,0,35"  Text=")" FontSize="130" FontWeight="Light"
+                       Visibility="{Binding ElementName=controlRoot, Path=ParenthesisVisibility}"/>
+        
+        
+    </StackPanel>
+</UserControl>

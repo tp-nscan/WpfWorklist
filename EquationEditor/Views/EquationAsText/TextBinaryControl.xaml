@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="EquationEditor.Views.EquationAsText.TextBinaryControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             x:Name="controlRoot"
+             mc:Ignorable="d">
+    <Grid Background="#2123">
+        <StackPanel Orientation="Horizontal">
+
+            <TextBlock VerticalAlignment="Center" Margin="0,0,0,35"
+                       Text="(" FontSize="130" FontWeight="Light" 
+                       Visibility="{Binding ElementName=controlRoot, Path=ParenthesisVisibility}"/>
+
+            <Viewbox Height="100" Stretch="Uniform">
+                <ContentPresenter ContentTemplate="{Binding ElementName=controlRoot, Path=LeftTemplate}"/>
+            </Viewbox>
+
+            <TextBlock VerticalAlignment="Center" Margin="0,0,0,0"
+                       Text="{Binding ElementName=controlRoot, Path=OperatorText}"
+                       FontSize="80" FontWeight="Light"/>
+
+            <Viewbox Height="100" Stretch="Uniform">
+                <ContentPresenter ContentTemplate="{Binding ElementName=controlRoot, Path=RightTemplate}"/>
+            </Viewbox>
+
+            <TextBlock VerticalAlignment="Center" Margin="0,0,0,35"  Text=")" FontSize="130" FontWeight="Light"
+                       Visibility="{Binding ElementName=controlRoot, Path=ParenthesisVisibility}"/>
+            
+        </StackPanel>
+    </Grid>
+</UserControl>

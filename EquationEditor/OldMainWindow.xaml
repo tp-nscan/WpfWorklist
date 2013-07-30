@@ -1,0 +1,77 @@
+﻿<Window x:Class="EquationEditor.OldMainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+        xmlns:Views="clr-namespace:EquationEditor.Views"
+        xmlns:EquationAsText="clr-namespace:EquationEditor.Views.EquationAsText" Title="OldMainWindow" >
+
+    <Window.Resources>
+        
+        <DataTemplate x:Key="powy">
+            <EquationAsText:TextPowerControl ParenthesisVisibility="Visible"/>
+        </DataTemplate>
+        
+        <DataTemplate x:Key="fracy">
+            <EquationAsText:TextFractionControl ParenthesisVisibility="Visible"
+                                       NumeratorTemplate="{StaticResource ResourceKey=powy}"
+                                       DenominatorTemplate="{StaticResource ResourceKey=powy}"/>
+        </DataTemplate>
+        
+        <DataTemplate x:Key="biny">
+            <EquationAsText:TextBinaryControl ParenthesisVisibility="Visible"
+                                    LeftTemplate="{StaticResource ResourceKey=powy}"
+                                    RightTemplate="{StaticResource ResourceKey=powy}"/>
+        </DataTemplate>
+
+    </Window.Resources>
+    
+    <Grid>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Viewbox Grid.Row="0">
+                <EquationAsText:TextBinaryControl ParenthesisVisibility="Visible"
+                                    LeftTemplate="{StaticResource ResourceKey=biny}"
+                                    RightTemplate="{StaticResource ResourceKey=fracy}"/>
+
+            </Viewbox>
+
+
+            <Viewbox Grid.Row="2">
+                <EquationAsText:TextPowerControl ParenthesisVisibility="Visible"
+                                    BaseTemplate="{StaticResource ResourceKey=biny}"
+                                    PowerTemplate="{StaticResource ResourceKey=fracy}"/>
+
+            </Viewbox>
+
+
+
+            <Viewbox Grid.Row="4">
+
+                <EquationAsText:TextFractionControl ParenthesisVisibility="Visible"
+                                       NumeratorTemplate="{StaticResource ResourceKey=biny}"
+                                       DenominatorTemplate="{StaticResource ResourceKey=powy}"/>
+            </Viewbox>
+
+
+
+            <GridSplitter Grid.Row="1"  HorizontalAlignment="Stretch" ResizeBehavior="PreviousAndNext" 
+							Height="2" Margin="2,0" Background="#6128" />
+
+            <GridSplitter Grid.Row="3"  HorizontalAlignment="Stretch" ResizeBehavior="PreviousAndNext" 
+							Height="2" Margin="2,0" Background="#6128" />
+            
+            <GridSplitter Grid.Row="5"  HorizontalAlignment="Stretch" ResizeBehavior="PreviousAndNext" 
+							Height="2" Margin="2,0" Background="#6128" />
+        </Grid>
+        
+    </Grid>
+</Window>

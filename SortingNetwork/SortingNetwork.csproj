@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AD8F9CCF-5411-49BD-8A3B-36B2D709028F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SortingNetwork</RootNamespace>
+    <AssemblyName>SortingNetwork</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Collections.Immutable">
+      <HintPath>..\packages\Microsoft.Bcl.Immutable.1.0.5-beta\lib\net45\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Validation">
+      <HintPath>..\packages\Validation.2.0.2.13022\lib\portable-windows8+net40+sl5+windowsphone8\Validation.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\CommonEx.cs" />
+    <Compile Include="KeyPair\IKeyPair.cs" />
+    <Compile Include="Runner\SorterPoolRunner.cs" />
+    <Compile Include="SorterMonitors\ISwitchMonitor.cs" />
+    <Compile Include="SorterMonitors\SorterMonitorToJson.cs" />
+    <Compile Include="SorterMonitors\SwitchMonitorToJson.cs" />
+    <Compile Include="Sorters\SorterDiff.cs" />
+    <Compile Include="Sorters\SorterRepoToJson.cs" />
+    <Compile Include="Sorters\ISorter.cs" />
+    <Compile Include="Sorters\SorterJsonConverter.cs" />
+    <Compile Include="Sorters\SorterType.cs" />
+    <Compile Include="SwitchableMonitors\SwitchableMonitor.cs" />
+    <Compile Include="Switchables\ISwitchablePool.cs" />
+    <Compile Include="Switchables\ISwitchableRepo.cs" />
+    <Compile Include="SorterPoolSteps\ISorterPoolState.cs" />
+    <Compile Include="SorterPoolOpsSpec\SorterPoolOpEvo.cs" />
+    <Compile Include="SorterPoolOpsSpec\SorterPoolOpRandomGen.cs" />
+    <Compile Include="SorterPoolOpsSpec\SorterPoolOpManual.cs" />
+    <Compile Include="SorterPoolOpsSpec\ISorterPoolOp.cs" />
+    <Compile Include="SorterPoolSteps\SorterPoolState.cs" />
+    <Compile Include="SorterPoolOpsSpec\SorterPoolOpJsonConverter.cs" />
+    <Compile Include="SorterPoolOpsSpec\SorterPoolOpType.cs" />
+    <Compile Include="SorterPoolSteps\SorterPoolStateToJson.cs" />
+    <Compile Include="Switchables\ISwitchable.cs" />
+    <Compile Include="Switchables\SwitchableBitArray.cs" />
+    <Compile Include="Switchables\SwitchableIntArray.cs" />
+    <Compile Include="Switchables\SwitchableJsonConverter.cs" />
+    <Compile Include="Switchables\SwitchablePool.cs" />
+    <Compile Include="Switchables\SwitchablePoolToJson.cs" />
+    <Compile Include="Switchables\SwitchableShort.cs" />
+    <Compile Include="Switchables\SwitchableType.cs" />
+    <Compile Include="Switches\ISwitch.cs" />
+    <Compile Include="KeyPair\KeySet.cs" />
+    <Compile Include="Sorters\Sorter.cs" />
+    <Compile Include="Sorters\SorterBase.cs" />
+    <Compile Include="Switches\Switch.cs" />
+    <Compile Include="Switches\SwitchBase.cs" />
+    <Compile Include="Sorters\SorterToJson.cs" />
+    <Compile Include="Switchables\SwitchableBitArrayToJson.cs" />
+    <Compile Include="Switchables\SwitchableIntArrayToJson.cs" />
+    <Compile Include="Switchables\SwitchableShortToJson.cs" />
+    <Compile Include="Switches\SwitchDiff.cs" />
+    <Compile Include="Switches\SwitchToJson.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="KeyPair\IKeyPairRepo.cs" />
+    <Compile Include="KeyPair\KeyPairRepo.cs" />
+    <Compile Include="Sorters\SorterRepo.cs" />
+    <Compile Include="Switchables\SwitchableRepo.cs" />
+    <Compile Include="SorterMonitors\SorterFinalResult.cs" />
+    <Compile Include="SorterMonitors\SorterMonitor.cs" />
+    <Compile Include="Runner\SorterPopGenerator.cs" />
+    <Compile Include="Runner\SorterTester.cs" />
+    <Compile Include="SorterMonitors\SwitchMonitor.cs" />
+    <Compile Include="Switches\SwitchType.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MathUtils\MathUtils.csproj">
+      <Project>{d3549e19-0cc7-4ce5-8b0f-6d5236e581d6}</Project>
+      <Name>MathUtils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

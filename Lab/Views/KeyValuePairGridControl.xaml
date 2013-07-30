@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="Lab.Views.KeyValuePairGridControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d">
+    <Border Background="Black" CornerRadius="12">
+        <DataGrid x:Name="dataGridImport" Foreground="Silver" Background="#3FFF" ItemsSource="{Binding Path=.}"
+                                    BorderThickness="0"
+                                    CanUserAddRows="False"
+        				            ColumnHeaderHeight="0"  d:LayoutOverrides="Width, Height" 
+        				            AutoGenerateColumns="False"
+        				            RowHeaderStyle="{DynamicResource RosieDataGridRowHeaderStyle}" 
+        				            CellStyle="{DynamicResource RosieDataGridCellStyle}" 
+        				            RowStyle="{DynamicResource RosieDataGridRowStyle}" 
+        				            SelectionMode="Single">
+            <DataGrid.Columns>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Key, Mode=OneWay}" Header="Key"/>
+                <DataGridTemplateColumn Header="Value">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Margin="3,0" FontWeight="Bold" Text="{Binding Value}" Foreground="{Binding ValueBrush}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+
+        </DataGrid>
+    </Border>
+</UserControl>

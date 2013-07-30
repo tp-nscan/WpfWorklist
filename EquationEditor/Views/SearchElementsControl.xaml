@@ -1,0 +1,70 @@
+﻿<UserControl x:Class="EquationEditor.Views.SearchElementsControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:DesignData="clr-namespace:EquationEditor.DesignData" 
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance DesignData:DesignElementListVm, IsDesignTimeCreatable=True}"
+             xmlns:Converters="clr-namespace:WpfUtils.Converters;assembly=WpfUtils"
+             xmlns:dd="clr-namespace:WpfUtils.DragAndDrop;assembly=WpfUtils" 
+             xmlns:db="clr-namespace:WpfUtils.Behaviors;assembly=WpfUtils"
+             x:Name="controlRoot"
+             d:DesignHeight="300" d:DesignWidth="300">
+    
+    <DockPanel LastChildFill="True">
+
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+            <Border CornerRadius="7" BorderBrush="Black" BorderThickness="1">
+                <TextBox Margin="2"
+                         BorderThickness="0"
+                         db:WatermarkBehavior.Watermark ="Search..."
+                         db:WatermarkBehavior.Command ="{Binding DoSearch}"
+                         HorizontalAlignment="Center"
+                         Width="{Binding ElementName=controlRoot, Path=ActualWidth, Converter={Converters:AdditionConverter Shift=-10}}" />
+                
+            </Border>
+        </StackPanel>
+
+        <ListView ItemsSource="{Binding ElementVms}" 
+                   dd:DragDrop.IsDragSource="True" dd:DragDrop.IsDropTarget="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Height="30" Width="30"
+                                DockPanel.Dock="Top" 
+                                HorizontalAlignment="Right"
+                                dd:DragDrop.IsDropTarget="True"
+                                dd:DragDrop.DropHandler="{Binding}">
+                            <Image.Style>
+                                <Style TargetType="Image">
+                                    <!--<Setter Property="Source" Value="{StaticResource clock}" />-->
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding DataType}" Value="Bool">
+                                            <Setter Property="Source" Value="{StaticResource boolean}" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding DataType}" Value="Date">
+                                            <Setter Property="Source" Value="{StaticResource date}" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding DataType}" Value="Numeric">
+                                            <Setter Property="Source" Value="{StaticResource numeric}" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding DataType}" Value="Time">
+                                            <Setter Property="Source" Value="{StaticResource clock}" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding DataType}" Value="Timespan">
+                                            <Setter Property="Source" Value="{StaticResource timespan}" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Image.Style>
+                        </Image>
+
+                        <TextBlock  Margin="2" Text="{Binding ElementDescr }" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        
+    </DockPanel>
+</UserControl>

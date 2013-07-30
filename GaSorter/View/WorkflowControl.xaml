@@ -1,0 +1,184 @@
+﻿<UserControl x:Class="GaSorter.View.WorkflowControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:builders="clr-namespace:SorterControls.Views.Builders;assembly=SorterControls"
+             xmlns:designData="clr-namespace:GaSorter.DesignData"
+             xmlns:steps2="clr-namespace:SorterControls.Views.Steps"
+             xmlns:steps="clr-namespace:SorterControls.Views.Steps;assembly=SorterControls"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance designData:DesignSorterGaWorkflowVm, IsDesignTimeCreatable=True}"
+             d:DesignHeight="400" d:DesignWidth="400">
+
+    <UserControl.Resources>
+
+        <Style x:Key="TabItemFocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="3,3,3,1" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <SolidColorBrush x:Key="TabControlNormalBorderBrush" Color="Brown"/>
+        <SolidColorBrush x:Key="ButtonNormalBackground" Color="#2F00"/>
+        <SolidColorBrush x:Key="TabItemHotBackground" Color="Orange"/>
+        <SolidColorBrush x:Key="TabItemSelectedBackground" Color="#40F0"/>
+        <SolidColorBrush x:Key="TabItemHotBorderBrush" Color="Pink"/>
+        <SolidColorBrush x:Key="TabItemDisabledBackground" Color="Lavender"/>
+        <SolidColorBrush x:Key="TabItemDisabledBorderBrush" Color="Green"/>
+
+        <Style x:Key="TabItemContainerStyle" TargetType="{x:Type TabItem}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource TabItemFocusVisual}"/>
+            <Setter Property="Foreground" Value="Gray"/>
+            <Setter Property="Padding" Value="6,1,6,1"/>
+            <Setter Property="BorderBrush" Value="{StaticResource TabControlNormalBorderBrush}"/>
+            <Setter Property="Background" Value="{StaticResource ButtonNormalBackground}"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TabItem}">
+                        <Grid SnapsToDevicePixels="true">
+                            <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1,1,1,0" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}">
+                                <ContentPresenter x:Name="Content" ContentSource="Header" HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="Bd" Value="{StaticResource TabItemHotBackground}"/>
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="true">
+                                <Setter Property="Panel.ZIndex" Value="1"/>
+                                <Setter Property="Background" TargetName="Bd" Value="{StaticResource TabItemSelectedBackground}"/>
+                            </Trigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsSelected" Value="false"/>
+                                    <Condition Property="IsMouseOver" Value="true"/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource TabItemHotBorderBrush}"/>
+                            </MultiTrigger>
+                            <Trigger Property="TabStripPlacement" Value="Bottom">
+                                <Setter Property="BorderThickness" TargetName="Bd" Value="1,0,1,1"/>
+                            </Trigger>
+                            <Trigger Property="TabStripPlacement" Value="Left">
+                                <Setter Property="BorderThickness" TargetName="Bd" Value="1,1,0,1"/>
+                            </Trigger>
+                            <Trigger Property="TabStripPlacement" Value="Right">
+                                <Setter Property="BorderThickness" TargetName="Bd" Value="0,1,1,1"/>
+                            </Trigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsSelected" Value="true"/>
+                                    <Condition Property="TabStripPlacement" Value="Top"/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Margin" Value="-2,-2,-2,-1"/>
+                                <Setter Property="Margin" TargetName="Content" Value="0,0,0,1"/>
+                            </MultiTrigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsSelected" Value="true"/>
+                                    <Condition Property="TabStripPlacement" Value="Bottom"/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Margin" Value="-2,-1,-2,-2"/>
+                                <Setter Property="Margin" TargetName="Content" Value="0,1,0,0"/>
+                            </MultiTrigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsSelected" Value="true"/>
+                                    <Condition Property="TabStripPlacement" Value="Left"/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Margin" Value="-2,-2,-1,-2"/>
+                                <Setter Property="Margin" TargetName="Content" Value="0,0,1,0"/>
+                            </MultiTrigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsSelected" Value="true"/>
+                                    <Condition Property="TabStripPlacement" Value="Right"/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Margin" Value="-1,-2,-2,-2"/>
+                                <Setter Property="Margin" TargetName="Content" Value="1,0,0,0"/>
+                            </MultiTrigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="Bd" Value="{StaticResource TabItemDisabledBackground}"/>
+                                <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource TabItemDisabledBorderBrush}"/>
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <DataTemplate x:Key="ClosableTabItemTemplate">
+            <DockPanel Width="120">
+                <Button 
+                    Command="{Binding Path=CloseCommand}"
+                    Content="X"
+                    Cursor="Hand"
+                    DockPanel.Dock="Right"
+                    Focusable="False"
+                    FontFamily="Courier" 
+                    FontSize="9"
+                    FontWeight="Bold"  
+                    Margin="2,0,0,4"
+                    Padding="0"
+                    BorderThickness="0"
+                    VerticalContentAlignment="Bottom"
+                    Width="16" Height="14" 
+                    Background="{x:Null}" 
+                    Foreground="#AA44" 
+                />
+                <TextBox Background="Pink" Text="Ralph" />  <!--Text="{Binding Path=Name}"/>-->
+            </DockPanel>
+        </DataTemplate>
+        
+    </UserControl.Resources>
+    
+    <Grid Margin="4">
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="3*" />
+        </Grid.ColumnDefinitions>
+
+        <steps2:WorkflowStepsControl x:Name="workflowStepsControl" DataContext="{Binding}" Grid.Column="0"/>
+
+        <GridSplitter Grid.Column="1" VerticalAlignment="Stretch" ResizeBehavior="PreviousAndNext" 
+								Width="3" Margin="0,2" Background="#8FFF" />
+
+        <TabControl Grid.Column="2" ItemContainerStyle="{DynamicResource TabItemContainerStyle}"
+            IsSynchronizedWithCurrentItem="True" 
+            ItemsSource="{Binding}" 
+            Margin="4" Background="{x:Null}">
+
+            <TabItem IsSelected="{Binding StepDetailsIsSelected}">
+                <TabItem.Header>
+                    <TextBlock Text="Details" />
+                </TabItem.Header>
+                
+                <steps:StepHost DataContext="{Binding SelectedStep, ElementName=workflowStepsControl}" />
+                
+            </TabItem>
+
+            <TabItem IsSelected="{Binding BuilderIsSelected}">
+                <TabItem.Header>
+                    <TextBlock Text="Builders" />
+                </TabItem.Header>
+
+                <builders:StepBuilderHost DataContext="{Binding WorkflowStepBuilderHostVm}" />
+                
+            </TabItem>
+            
+        </TabControl>
+        
+
+    </Grid>
+
+
+</UserControl>

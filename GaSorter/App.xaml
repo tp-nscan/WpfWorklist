@@ -1,0 +1,16 @@
+﻿<Application x:Class="GaSorter.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/SorterControls;component/Views/Builders/StepBuilderTemplateSelector.xaml" />
+                <ResourceDictionary Source="/SorterControls;component/Views/Steps/StepTemplateSelector.xaml" />
+                <ResourceDictionary Source="/SorterControls;component/Views/Entities/EntityTemplateSelector.xaml" />
+                <ResourceDictionary Source="/WpfUtils;component/Resources/DataGridStyles.xaml" />
+                <ResourceDictionary Source="/WpfUtils;component/Resources/GlassButtonStyle.xaml" />
+                <ResourceDictionary Source="/SorterControls;component/Views/Resources/BasicStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

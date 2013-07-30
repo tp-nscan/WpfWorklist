@@ -1,0 +1,20 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:poolControls="clr-namespace:SorterControls.Views.Steps"
+                    xmlns:entities="clr-namespace:SorterControls.Views.Entities">
+
+    <DataTemplate x:Key="SwitchablePoolControl">
+        <entities:SwitchablePoolControl/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="SorterPoolControl">
+        <entities:SorterPoolControl/>
+    </DataTemplate>
+
+
+    <entities:EntityTemplateSelector x:Key="entityTemplateSelector"
+        SwitchablePoolTemplate="{StaticResource SwitchablePoolControl}"
+        SorterPoolTemplate="{StaticResource SorterPoolControl}"
+     />
+    
+</ResourceDictionary>

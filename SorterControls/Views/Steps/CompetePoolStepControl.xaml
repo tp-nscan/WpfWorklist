@@ -1,0 +1,149 @@
+﻿<UserControl x:Class="SorterControls.Views.Steps.CompetePoolStepC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:steps="clr-namespace:SorterControls.DesignData.Steps"
+             xmlns:controls="clr-namespace:SorterControls.Views.Entities"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance steps:DesignCompetePoolStepVm, IsDesignTimeCreatable=True}"
+             d:DesignHeight="900" d:DesignWidth="600">
+    <UserControl.Resources>
+        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource GlassButton}">
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Width" Value="70"/>
+            <Setter Property="TextBlock.FontSize" Value="12"/>
+        </Style>
+    </UserControl.Resources>
+
+    <DockPanel LastChildFill="True" Background="#2F00">
+
+        <DockPanel LastChildFill="True" DockPanel.Dock="Top">
+            <!--Run BUTTON-->
+            <Button DockPanel.Dock="Right"
+                  Command="{Binding Path=CancelCommandVm.Command}"
+                  Content="{Binding Path=CancelCommandVm.DisplayName}"
+                  HorizontalAlignment="Left"
+                  Margin="8,2" 
+                  MinWidth="60" 
+                  />
+            
+            <!--Run BUTTON-->
+            <Button DockPanel.Dock="Right"
+                  Command="{Binding Path=RunCommandVm.Command}"
+                  Content="{Binding Path=RunCommandVm.DisplayName}"
+                  HorizontalAlignment="Left"
+                  Margin="8,2" 
+                  MinWidth="60" 
+                  />
+            <Label Style="{DynamicResource Header1}"  Content="Compete Pool"/>
+        </DockPanel>
+
+       <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <GridSplitter Grid.Row="1"  HorizontalAlignment="Stretch" ResizeBehavior="PreviousAndNext" 
+								Height="2" Margin="2,0" Background="#FFFF" />
+
+
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Style="{DynamicResource FieldNameLabel}" Grid.Row="0" Grid.Column="0" Content="Index"/>
+                    <Label Style="{DynamicResource FieldNameLabel}" Grid.Row="1" Grid.Column="0" Content="Id"/>
+                    <Label Style="{DynamicResource FieldNameLabel}" Grid.Row="2" Grid.Column="0" Content="Name"/>
+                    <Label Style="{DynamicResource FieldNameLabel}" Grid.Row="3" Grid.Column="0" Content="Description"/>
+                    <Label Style="{DynamicResource FieldNameLabel}" Grid.Row="4" Grid.Column="0" Content="Random seed in"/>
+                    <Label Style="{DynamicResource FieldNameLabel}" Grid.Row="5" Grid.Column="0" Content="Random seed out"/>
+                    <Label Style="{DynamicResource FieldNameLabel}" Grid.Row="6" Grid.Column="0" Content="Generation count"/>
+                    <Label Style="{DynamicResource FieldNameLabel}" Grid.Row="7" Grid.Column="0" Content="Sorter pool size"/>
+                    <Label Style="{DynamicResource FieldNameLabel}" Grid.Row="8" Grid.Column="0" Content="Sorter champ count"/>
+                    <Label Style="{DynamicResource FieldNameLabel}" Grid.Row="9" Grid.Column="0" Content="Switchable pool size"/>
+                    <Label Style="{DynamicResource FieldNameLabel}" Grid.Row="10" Grid.Column="0" Content="Switchable champ count"/>
+
+                    <Label Style="{DynamicResource FieldValueLabel}" Grid.Row="0" Grid.Column="1" Content="{Binding Index}"/>
+                    <Label Style="{DynamicResource FieldValueLabel}" Grid.Row="1" Grid.Column="1" Content="{Binding Guid}"/>
+                    <TextBox Style="{DynamicResource FieldTextBox}" Grid.Row="2" Grid.Column="1" Text="{Binding Name}"/>
+                    <TextBox Style="{DynamicResource FieldTextBox}" Grid.Row="3" Grid.Column="1" Text="{Binding Description}"/>
+                    <Label Style="{DynamicResource FieldValueLabel}" Grid.Row="4" Grid.Column="1" Content="{Binding SeedIn}"/>
+                    <Label Style="{DynamicResource FieldValueLabel}" Grid.Row="5" Grid.Column="1" Content="{Binding SeedOut}"/>
+                    <Label Style="{DynamicResource FieldValueLabel}" Grid.Row="6" Grid.Column="1" Content="{Binding GenerationCount}"/>
+                    <Label Style="{DynamicResource FieldValueLabel}" Grid.Row="7" Grid.Column="1" Content="{Binding SorterPoolSize}"/>
+                    <Label Style="{DynamicResource FieldValueLabel}" Grid.Row="8" Grid.Column="1" Content="{Binding SorterChampCount}"/>
+                    <Label Style="{DynamicResource FieldValueLabel}" Grid.Row="9" Grid.Column="1" Content="{Binding SwitchablePoolSize}"/>
+                    <Label Style="{DynamicResource FieldValueLabel}" Grid.Row="10" Grid.Column="1" Content="{Binding SwitchableChampCount}"/>
+
+                </Grid>
+            </ScrollViewer>
+
+
+            <Grid Grid.Row="3" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <GridSplitter Grid.Column="1" VerticalAlignment="Stretch" ResizeBehavior="PreviousAndNext" 
+                            Grid.RowSpan="7"
+							Width="3" Margin="0,2" Background="#8FFF" />
+
+                <Label Style="{DynamicResource Header2}" Grid.Row="0" Grid.Column="0" Content="Sorter Results"/>
+
+                <controls:SorterResultPoolControl SorterResultPoolVm="{Binding OutputSorterPoolVm}"  Grid.Row="1"/>
+
+                <Label Style="{DynamicResource Header2}" Grid.Row="0" Grid.Column="2" Content="Switchables"/>
+
+                <DataGrid ItemsSource="{Binding OutputSwitchablePoolVm.SwitchableVms}" Grid.Row="1" Grid.Column="2"
+                          AutoGenerateColumns="False"
+                          HorizontalScrollBarVisibility="Auto"
+                          >
+
+                    <DataGrid.Columns>
+                        <DataGridTextColumn IsReadOnly="True"  Binding="{Binding StringValue, Mode=OneWay}" Header="StringValue"/>
+                    </DataGrid.Columns>
+
+                </DataGrid>
+
+            </Grid>
+
+
+        </Grid>
+            
+    </DockPanel>
+</UserControl>

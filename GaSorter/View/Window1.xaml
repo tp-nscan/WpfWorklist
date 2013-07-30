@@ -1,0 +1,45 @@
+﻿<Window x:Class="GaSorter.View.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:presentationOptions="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options" 
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controlVms="clr-namespace:SorterControls.DesignData.Entities;assembly=SorterControls"
+        xmlns:controls="clr-namespace:SorterControls.Views.Entities;assembly=SorterControls"
+        xmlns:testData="clr-namespace:WpfUtils.SelectableCollection.TestData;assembly=WpfUtils"
+        mc:Ignorable="d"
+        d:DesignHeight="600" d:DesignWidth="800"
+        d:DataContext="{d:DesignInstance testData:ObservableSelectableNames, IsDesignTimeCreatable=True}"
+        Title="MainWindow">
+    <!--d:DataContext="{d:DesignInstance controlVms:DesignSorterResultPoolVm, IsDesignTimeCreatable=True}"-->
+
+    <Window.Resources>
+
+        <SolidColorBrush x:Key="brish1" presentationOptions:Freeze="True" Color="Brown"/>
+        <SolidColorBrush x:Key="brish2"  Color="Green"/>
+        
+    </Window.Resources>
+
+    <DockPanel LastChildFill="True">
+
+        <TextBlock x:Name="tb" FontSize="30" Foreground="{StaticResource brish1}">Hi</TextBlock>
+        <TextBlock FontSize="30" Foreground="{StaticResource brish2}">Hi</TextBlock>
+
+        <controls:SorterResultPoolControl x:Name="ralph"/>
+
+
+        <StackPanel>
+            <Button Width="100" Height="75" Click="Button_Click">Changeo</Button>
+            <Button Width="100" Height="75" Click="Button_Click">SelectFirst</Button>
+        </StackPanel>
+
+        <ListView ItemsSource="{Binding Items}" Background="Aquamarine">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Setter Property="IsSelected" Value="{Binding IsSelected}"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
+
+    </DockPanel>
+</Window>
