@@ -7,9 +7,9 @@ using SortingNetworkDm.Entities;
 
 namespace SorterControls.DesignData.Builders
 {
-    public class DesignWorkflowStepBuilderHostVm : WorkflowStepBuilderHostVmImpl
+    public class DesignStepBuilderHostVm : StepBuilderHostVmImpl
     {
-        public DesignWorkflowStepBuilderHostVm()
+        public DesignStepBuilderHostVm()
             : base(IndexProvider.MakeTest(1), new TestEntityProvider())
         {
         }

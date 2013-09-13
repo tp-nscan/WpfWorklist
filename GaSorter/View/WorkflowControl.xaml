@@ -171,7 +171,7 @@
                     <TextBlock Text="Builders" />
                 </TabItem.Header>
 
-                <builders:StepBuilderHost DataContext="{Binding WorkflowStepBuilderHostVm}" />
+                <builders:StepBuilderHost DataContext="{Binding StepBuilderHostVm}" />
                 
             </TabItem>
             

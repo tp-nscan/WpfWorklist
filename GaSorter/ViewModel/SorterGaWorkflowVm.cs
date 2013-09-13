@@ -60,8 +60,8 @@ namespace GaSorter.ViewModel
                 StepVms.Items.Add(MakeStepVm(modelStep));
             }
 
-            WorkflowStepBuilderHostVm = StepBuilderHostVm.Make(Workflow, entityProvider);
-            WorkflowStepBuilderHostVm.OnStepCreated.Subscribe(NewStep);
+            StepBuilderHostVm = SorterControls.ViewModels.Bulders.StepBuilderHostVm.Make(Workflow, entityProvider);
+            StepBuilderHostVm.OnStepCreated.Subscribe(NewStep);
             BuilderIsSelected = true;
         }
 
@@ -188,14 +188,14 @@ namespace GaSorter.ViewModel
 
         #endregion // SaveWorkflowAs Command
 
-        private IWorkflowStepBuilderHostVm _workflowStepBuilderHostVm;
-        public IWorkflowStepBuilderHostVm WorkflowStepBuilderHostVm
+        private IStepBuilderHostVm _stepBuilderHostVm;
+        public IStepBuilderHostVm StepBuilderHostVm
         {
-            get { return _workflowStepBuilderHostVm; }
+            get { return _stepBuilderHostVm; }
             set
             {
-                _workflowStepBuilderHostVm = value;
-                OnPropertyChanged("WorkflowStepBuilderHostVm");
+                _stepBuilderHostVm = value;
+                OnPropertyChanged("StepBuilderHostVm");
             }
         }
 

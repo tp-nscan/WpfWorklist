@@ -11,25 +11,25 @@ using WpfUtils;
 
 namespace SorterControls.ViewModels.Bulders
 {
-    public interface IWorkflowStepBuilderHostVm
+    public interface IStepBuilderHostVm
     {
         IObservable<IStep> OnStepCreated { get; }
     }
 
     public static class StepBuilderHostVm
     {
-        public static IWorkflowStepBuilderHostVm Make(IIndexProvider myIndexProvider, IEntityProvider entityProvider)
+        public static IStepBuilderHostVm Make(IIndexProvider myIndexProvider, IEntityProvider entityProvider)
         {
-            return new WorkflowStepBuilderHostVmImpl(myIndexProvider, entityProvider);
+            return new StepBuilderHostVmImpl(myIndexProvider, entityProvider);
         }
     }
 
-    public class WorkflowStepBuilderHostVmImpl : ViewModelBase, IWorkflowStepBuilderHostVm
+    public class StepBuilderHostVmImpl : ViewModelBase, IStepBuilderHostVm
     {
-        public WorkflowStepBuilderHostVmImpl(IIndexProvider myIndexProvider, IEntityProvider entityProviderProvider)
+        public StepBuilderHostVmImpl(IIndexProvider myIndexProvider, IEntityProvider entityProvider)
         {
             _myIndexProvider = myIndexProvider;
-            _entityProvider = entityProviderProvider;
+            _entityProvider = entityProvider;
             WorkflowStepBuilderVm = new EmptyStepBuilderVm();
         }
 
@@ -43,7 +43,7 @@ namespace SorterControls.ViewModels.Bulders
         public IWorkflowStepBuilderVm WorkflowStepBuilderVm
         {
             get { return _workflowStepBuilderVm; }
-            set
+            private set
             {
                 _workflowStepBuilderVm = value;
 

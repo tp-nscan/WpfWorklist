@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:designData="clr-namespace:SorterControls.DesignData.Builders"
              mc:Ignorable="d" 
-             d:DataContext="{d:DesignInstance designData:DesignWorkflowStepBuilderHostVm, IsDesignTimeCreatable=True}"
+             d:DataContext="{d:DesignInstance designData:DesignStepBuilderHostVm, IsDesignTimeCreatable=True}"
              d:DesignHeight="300" d:DesignWidth="300">
     
     <UserControl.Resources>
